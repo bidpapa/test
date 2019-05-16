@@ -11,10 +11,12 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'sourceLanguage' => 'en',
+    'language' => 'en',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '7IRbxgbyez5Y-Tnn20lOeUUNBZuJnvvU',
+            'cookieValidationKey' => '1',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -43,6 +45,14 @@ $config = [
             ],
         ],
         'db' => $db,
+        'i18n' => [
+          'translations' => [
+            'common*' => [
+              'class' => 'yii\i18n\PhpMessageSource',
+              'basePath' => '@app/messages',
+            ],
+          ],
+        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -53,6 +63,11 @@ $config = [
         */
     ],
     'params' => $params,
+    'modules' => [
+      'order' => [
+        'class' => 'app\modules\order\OrderModule',
+      ],
+    ],
 ];
 
 if (YII_ENV_DEV) {
